@@ -10,7 +10,7 @@ const reviewController = {
   addReview: (req, res) => {
     Review.create({
       id: req.body.id,
-      createdBy: req.body.username,
+      createdBy: req.body.createdBy,
       createdAt: Date.now(),
       message: req.body.message
     })

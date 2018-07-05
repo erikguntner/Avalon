@@ -18,21 +18,22 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeFromCart: (target) => dispatch(actions.removeFromCart(target))
+    removeFromCart: (target, cart, cartTotal) => dispatch(actions.removeFromCart(target, cart, cartTotal))
   }
 }
 
 class App extends Component {
+
   render() {
     return (
       <Router>
         <div className="App">
           <Header cartTotal={this.props.cartTotal} />
-          <Cart cart={this.props.cart} removeFromCart={this.props.removeFromCart} />
+          <Cart cartTotal={this.props.cartTotal} cart={this.props.cart} removeFromCart={this.props.removeFromCart} />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/store" component={StoreContainer} />
-            <Route exact path="/:id" component={ItemInfo} />
+            <Route path="/:id" component={ItemInfo} />
           </Switch>
         </div>
       </Router>

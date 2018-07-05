@@ -45,7 +45,7 @@ class Header extends Component {
             <div className="header-item icon" style={{ marginLeft: '2rem' }}><FaUser /></div>
           </div>
         </div>
-      </Fragment >
+      </Fragment>
     )
   }
 }

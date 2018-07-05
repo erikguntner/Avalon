@@ -6,13 +6,13 @@ const Item = (props) => {
 
    return (
       <div>
-         <Link to={`/${props.id}`} style={{ textDecoration: 'none' }}>
-            <div className="item">
+         <div className="item">
+            <Link to={`/${props.id}`} style={{ textDecoration: 'none' }}>
                <img src={props.img} alt="clothing item" className="item-img" />
-               <div className="item-title">{props.title}</div>
-               <div className="item-price">${props.price}.00</div>
-            </div>
-         </Link>
+            </Link>
+            <div className="item-title">{props.title}</div>
+            <div className="item-price">${props.price}.00</div>
+         </div>
       </div>
    )
 }

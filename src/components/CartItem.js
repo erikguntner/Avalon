@@ -13,7 +13,7 @@ const CartItem = (props) => {
             <div className="cart-item-title">{props.title}</div>
             <div className="cart-item-price">${props.price}.00</div>
          </div>
-         <div className="cart-item-icon" ><FaRemove onClick={() => { props.removeFromCart(props.id) }} /></div>
+         <div className="cart-item-icon" ><FaRemove onClick={() => { props.removeFromCart(props.id, props.cart, props.cartTotal) }} /></div>
       </div>
    )
 }
