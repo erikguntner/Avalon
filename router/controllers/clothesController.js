@@ -12,12 +12,19 @@ const clothesController = {
     Clothes.create({
       id: req.body.id,
       title: req.body.title,
+      price: req.body.price,
       type: req.body.type,
       img: req.body.img,
       description: req.body.description
     })
       .then(result => res.json(result))
       .catch(err => console.log(err));
+  },
+
+  deleteClothes: (req, res) => {
+    Clothes.deleteMany({}, (err, response) => {
+      if (err) return console.log(err);
+    }).then(result => res.json(result));
   },
 
   findGarment: (req, res) => {

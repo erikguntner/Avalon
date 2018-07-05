@@ -23,6 +23,7 @@ app.post('/reviews', reviewController.addReview);
 
 app.get('/clothes', clothesController.getClothes);
 app.post('/clothes', clothesController.addClothes);
+app.delete('/clothes', clothesController.deleteClothes);
 app.get('/clothes/id?:id', clothesController.findGarment);
 
 
