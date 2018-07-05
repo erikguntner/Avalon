@@ -2,7 +2,6 @@ const Clothes = require('../models/clothes');
 
 const clothesController = {
   getClothes: (req, res) => {
-    console.log('hi');
     Clothes.find({}, (err, clothes) => {
       if (err) return console.error(err);
     }).then(result => res.json(result));

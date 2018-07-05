@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/reviews', reviewController.getReviews);
 app.post('/reviews', reviewController.addReview);
+app.delete('/reviews', reviewController.deleteReviews);
+
 
 app.get('/clothes', clothesController.getClothes);
 app.post('/clothes', clothesController.addClothes);

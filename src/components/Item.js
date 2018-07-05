@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import tShirt from '../assets/white-tshirt.jpg';
-import jeansDark from '../assets/jeans-dark.jpg';
-import greySweatshirt from '../assets/grey-sweatshirt.jpg';
 
 const Item = (props) => {
 

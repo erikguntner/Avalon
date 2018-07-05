@@ -1,21 +1,26 @@
 import * as types from "../constants/actionTypes";
 import clothingItems from '../clothing';
 
-export function addToCart(cart, cartTotal, id) {
+export function addToCart(id, clothingList, cart, cartTotal, size) {
 
   let newCartTotal = cartTotal;
   newCartTotal += 1;
 
-  const cartItem = clothingItems.find(item => {
-    return item.id.toString() === id;
+  const cartItem = clothingList.find(item => {
+    return item._id.toString() === id;
   });
+
+  console.log('cartItem', cartItem);
 
   const newCartItem = {
     id: cartItem.id,
     title: cartItem.title,
+    size: size,
     price: cartItem.price,
     img: cartItem.img
   }
+
+  console.log(newCartItem);
 
   const newCart = cart.slice();
   newCart.push(newCartItem);
@@ -46,21 +51,62 @@ export function removeFromCart(target, cart, cartTotal) {
   }
 };
 
-export function setReviews(reviews, fetchedReviews) {
+export function getGarment(garmentId) {
+  return async function (dispatch) {
+    const result = await fetch(`http://localhost:3000/clothes/id?id=${garmentId}`);
+    const fetchedGarment = await result.json();
 
-  return {
-    type: types.SET_REVIEWS,
-    fetchedReviews
+    return dispatch({
+      type: types.GET_GARMENT,
+      fetchedGarment
+    })
+  }
+}
+
+
+export function setClothes() {
+  return async function (dispatch) {
+    const result = await fetch('http://localhost:3000/clothes')
+    const fetchedClothes = await result.json();
+
+    return dispatch({
+      type: types.SET_CLOTHES,
+      fetchedClothes
+    })
+  }
+}
+
+export function setReviews(id) {
+
+  return async function (dispatch) {
+    const result = await fetch('http://localhost:3000/reviews')
+    const fetchedReviews = await result.json();
+    console.log(fetchedReviews);
+
+    const filteredReviews = fetchedReviews.filter(review => {
+      return review.id === id
+    })
+
+    console.log(filteredReviews);
+
+    return dispatch({
+      type: types.SET_REVIEWS,
+      filteredReviews
+    })
   }
 }
 
 export function submitReview(reviews, text, id, author) {
 
+  console.log(id);
   const message = {
-    id: parseInt(id),
+    id: id,
     createdBy: author,
     message: text
   }
+
+  console.log(message);
+
   return async function (dispatch) {
     const res = await fetch('http://localhost:3000/reviews', {
       method: 'POST',

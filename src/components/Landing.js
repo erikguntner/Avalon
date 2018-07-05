@@ -1,9 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import Item from './Item';
-import clothingItems from '../clothing.js';
+import Map from './Map';
+import * as actions from "../actions/actions";
+import { connect } from "react-redux";
+// import clothingItems from '../clothing.js';
 import 'babel-polyfill';
 
+
+const mapStateToProps = (store) => {
+  return {
+    clothingItems: store.clothes.clothingList
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setClothes: () => dispatch(actions.setClothes())
+  }
+}
 
 class Landing extends Component {
   constructor() {
@@ -14,17 +29,10 @@ class Landing extends Component {
   }
 
   async componentDidMount() {
-    const result = await fetch('http://localhost:3000/clothes')
-    const fetchedClothes = await result.json();
-    this.setState({
-      clothes: fetchedClothes
-    })
+    this.props.setClothes();
   }
 
   render() {
-    // const clothing = clothingItems.map((item, i) => {
-    //   return <Item key={item.id} id={item.id} title={item.title} price={item.price} img={item.img} />
-    // });
 
     return (
       <Fragment>
@@ -40,16 +48,23 @@ class Landing extends Component {
           <h2 className="favorites-title">Our Favorites</h2>
           <hr></hr>
           <div className="favorites-container">
-            {this.state.clothes ? this.state.clothes.map((item, i) => {
-              console.log(item);
-              return <Item key={item._id} id={item.id} title={item.title} price={item.price} img={item.img} />
-            }) : ''}
+            {this.props.clothingItems.map((item, i) => {
+              return <Item key={item._id} id={item._id} title={item.title} price={item.price} img={item.img} />
+            })}
           </div>
         </section>
+        <div className="map-container">
+          <h2 className="map-title">Where You Can Find Us</h2>
+          <hr></hr>
+          <Map />
+        </div>
       </Fragment>
     )
   }
 }
 
 
-export default Landing;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Landing);

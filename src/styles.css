@@ -87,6 +87,32 @@ body {
   color: white
 }
 
+.btn-sizes {
+  font-family: inherit;
+  /* border-radius: 3px; */
+  border: none;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.4rem;
+  background-color: none;
+  border: 1px solid black;
+  color: black;
+  transition: all .2s ease;
+  outline: none;
+  margin-right: 2rem;
+}
+
+.btn-sizes:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white
+}
+
+.btn-sizes-focus {
+  background-color: black;
+  color: white
+}
+
 
 /* //////////////////////////////////////////////////// */
 /* HEADER */
@@ -203,7 +229,7 @@ body {
 
 .landing {
   height: 90vh;
-  background-image: url(./assets/img1.jpg);
+  background-image: url(https://image.ibb.co/dp1hmd/img1.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -344,6 +370,11 @@ hr {
   width: auto;
 }
 
+.sizes-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -373,13 +404,14 @@ textarea {
 .review {
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
   border-top: 1px solid var(--color-grey-light-3);
   border-bottom: 1px solid var(--color-grey-light-3);
 
 }
 
 .review-user {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .review-date {
@@ -387,5 +419,30 @@ textarea {
 }
 
 .review-message {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+}
+
+
+
+/* //////////////////////////////////////////////////// */
+/* Map */
+/* /////////////////////////////////////////////////// */
+
+.map-container {
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+  background-image: url(https://image.ibb.co/gLt4zy/background2.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.map-title {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 200;
+  margin: 0;
 }

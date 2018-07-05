@@ -16,7 +16,13 @@ const reviewController = {
     })
       .then(result => res.json(result))
       .catch(err => console.log(err));
-  }
+  },
+
+  deleteReviews: (req, res) => {
+    Review.deleteMany({}, (err, response) => {
+      if (err) return console.log(err);
+    }).then(result => res.json(result));
+  },
 }
 
 module.exports = reviewController;

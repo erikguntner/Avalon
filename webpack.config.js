@@ -28,11 +28,11 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-
+            
           },
         }],
       },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=src/assets/[name].[ext]" },
+      // { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=src/assets/[name].[ext]" },
     ]
   },
   plugins: [

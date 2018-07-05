@@ -3,8 +3,9 @@ import clothingItems from '../clothing';
 
 const initialState = {
   cartTotal: 0,
+  currentItem: {},
   cart: [],
-  clothingList: clothingItems,
+  clothingList: [],
   reviews: []
 };
 
@@ -12,6 +13,8 @@ const clothingReducer = (state = initialState, action) => {
   let cart;
   let cartTotal;
   let reviews;
+  let clothingList;
+  let currentItem;
 
   switch (action.type) {
     case types.ADD_TO_CART:
@@ -32,8 +35,23 @@ const clothingReducer = (state = initialState, action) => {
         cart
       }
 
+    case types.SET_CLOTHES:
+      clothingList = action.fetchedClothes;
+      console.log(clothingList);
+      return {
+        ...state,
+        clothingList
+      }
+
+    case types.GET_GARMENT:
+      currentItem = action.fetchedGarment[0];
+
+      return {
+        ...state,
+        currentItem
+      }
     case types.SET_REVIEWS:
-      reviews = action.fetchedReviews;
+      reviews = action.filteredReviews;
       return {
         ...state,
         reviews
