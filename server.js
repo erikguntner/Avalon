@@ -5,12 +5,13 @@ const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const reviewController = require('./router/controllers/reviewControllers');
 const clothesController = require('./router/controllers/clothesController');
+const dbKey = require('./config.js').dbKey;
 
 const bodyParser = require('body-parser');
 
 mongoose.connect(
-   'mongodb://erik:Efg-48,zrE@ds127841.mlab.com:27841/clothing_store',
-   () => console.log('Connected')
+  dbKey,
+  () => console.log('Connected')
 );
 
 app.use(cors())
