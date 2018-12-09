@@ -1,5 +1,5 @@
 import * as types from "../constants/actionTypes";
-import clothingItems from '../clothing';
+// import clothingItems from '../clothing';
 
 const initialState = {
   cartTotal: 0,
@@ -37,7 +37,6 @@ const clothingReducer = (state = initialState, action) => {
 
     case types.SET_CLOTHES:
       clothingList = action.fetchedClothes;
-      console.log(clothingList);
       return {
         ...state,
         clothingList

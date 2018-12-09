@@ -1,5 +1,4 @@
 import * as types from "../constants/actionTypes";
-import clothingItems from '../clothing';
 
 export function addToCart(id, clothingList, cart, cartTotal, size) {
 
@@ -10,17 +9,13 @@ export function addToCart(id, clothingList, cart, cartTotal, size) {
     return item._id.toString() === id;
   });
 
-  console.log('cartItem', cartItem);
-
   const newCartItem = {
-    id: cartItem.id,
+    id: id,
     title: cartItem.title,
     size: size,
     price: cartItem.price,
     img: cartItem.img
   }
-
-  console.log(newCartItem);
 
   const newCart = cart.slice();
   newCart.push(newCartItem);
@@ -81,13 +76,10 @@ export function setReviews(id) {
   return async function (dispatch) {
     const result = await fetch('http://localhost:3000/reviews')
     const fetchedReviews = await result.json();
-    console.log(fetchedReviews);
 
     const filteredReviews = fetchedReviews.filter(review => {
       return review.id === id
     })
-
-    console.log(filteredReviews);
 
     return dispatch({
       type: types.SET_REVIEWS,
@@ -98,14 +90,11 @@ export function setReviews(id) {
 
 export function submitReview(reviews, text, id, author) {
 
-  console.log(id);
   const message = {
     id: id,
     createdBy: author,
     message: text
   }
-
-  console.log(message);
 
   return async function (dispatch) {
     const res = await fetch('http://localhost:3000/reviews', {

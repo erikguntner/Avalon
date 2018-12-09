@@ -9,8 +9,8 @@ const clothesController = require('./router/controllers/clothesController');
 const bodyParser = require('body-parser');
 
 mongoose.connect(
-   'mongodb://erik:Efg-48,zrE@ds127841.mlab.com:27841/clothing_store',
-   () => console.log('Connected')
+  'mongodb://erik:Efg-48,zrE@ds127841.mlab.com:27841/clothing_store',
+  () => console.log('Connected')
 );
 
 app.use(cors())

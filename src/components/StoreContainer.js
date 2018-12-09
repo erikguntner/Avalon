@@ -23,6 +23,17 @@ class StoreContainer extends Component {
     this.props.setClothes();
   }
 
+  handleChange(event) {
+    console.log(event.target.value)
+    if (event.target.value === 'high') {
+      const sorted = this.props.clothingItems.sort((a, b) => a.price + b.price)
+      console.log('high', sorted);
+    } else if (event.target.value === 'low') {
+      const sorted = this.props.clothingItems.sort((a, b) => a.price - b.price)
+      console.log('low', sorted)
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -30,10 +41,10 @@ class StoreContainer extends Component {
           <h1>Filter your search</h1>
           <label>
             Sort By Price:
-          <select>
-              <option value="volvo">Any</option>
-              <option value="saab">Highest to Lowest</option>
-              <option value="mercedes">Lowest to Highest</option>
+          <select onChange={(event) => this.handleChange(event)}>
+              <option value="all">Any</option>
+              <option value="high">Highest to Lowest</option>
+              <option value="low">Lowest to Highest</option>
             </select>
           </label>
         </div>

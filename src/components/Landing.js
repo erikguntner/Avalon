@@ -37,9 +37,10 @@ class Landing extends Component {
     return (
       <Fragment>
         <section className="landing">
+          <div className="tint"></div>
           <div className="container">
-            <h1 className="landing-title">Clothing Store</h1>
-            <Link to="/store" style={{ textDecoration: 'none' }}>
+            <h1 className="landing-title">Avalon</h1>
+            <Link to="/store" style={{ textDecoration: 'none', zIndex: '10' }}>
               <button className="btn">Shop Now</button>
             </Link>
           </div>
@@ -48,7 +49,8 @@ class Landing extends Component {
           <h2 className="favorites-title">Our Favorites</h2>
           <hr></hr>
           <div className="favorites-container">
-            {this.props.clothingItems.map((item, i) => {
+            { 
+              this.props.clothingItems.slice(0, 4).map((item, i) => {
               return <Item key={item._id} id={item._id} title={item.title} price={item.price} img={item.img} />
             })}
           </div>
